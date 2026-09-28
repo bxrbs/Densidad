@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Densidad teórica</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <h1>Densidad</h1>
+
+    <section class="mode-switch">
+      <button class="mode-btn active" data-mode="mv">M/V</button>
+      <button class="mode-btn" data-mode="teorica">Teórica</button>
+    </section>
+
+    <section class="layout">
+      <article class="card">
+        <div class="card-title">
+          <span id="leftTitle">Datos</span>
+        </div>
+
+        <form id="densityForm" onsubmit="return false;">
+          <div id="mvFields" class="fields">
+            <label for="mvElement">Elemento:</label>
+            <select id="mvElement">
+              <option value="">-- Selecciona --</option>
+            </select>
+
+            <label for="mass">Masa (g):</label>
+            <input id="mass" type="number" min="0" step="any" placeholder="Ej. 50" />
+
+            <label for="volume">Volumen (cm³):</label>
+            <input id="volume" type="number" min="0" step="any" placeholder="Ej. 10" />
+          </div>
+
+          <div id="theoryFields" class="fields hidden">
+            <label for="thElement">Elemento:</label>
+            <select id="thElement">
+              <option value="">-- Selecciona --</option>
+            </select>
+
+            <div class="info-box compact">
+              <div><strong>Tipo de celda:</strong> <span id="latticeType">-</span></div>
+              <div><strong>Átomos/celda:</strong> <span id="atomsPerCell">-</span></div>
+              <div><strong>Peso atómico:</strong> <span id="atomicWeight">-</span></div>
+            </div>
+
+            <fieldset class="radio-group">
+              <legend>Usar para calcular:</legend>
+              <label><input type="radio" name="inputType" value="a" checked /> Parámetro reticular (a)</label>
+              <label><input type="radio" name="inputType" value="r" /> Radio atómico (r)</label>
+              <label><input type="radio" name="inputType" value="v" /> Volumen de celda</label>
+            </fieldset>
+
+            <div id="aGroup" class="subfield">
+              <label for="aValue">a (Å):</label>
+              <input id="aValue" type="number" min="0" step="any" placeholder="Ej. 2.86" />
+            </div>
+
+            <div id="rGroup" class="subfield hidden">
+              <label for="rValue">r (Å):</label>
+              <input id="rValue" type="number" min="0" step="any" placeholder="Ej. 1.28" />
+            </div>
+
+            <div id="vGroup" class="subfield hidden">
+              <label for="cellVolume">Volumen de celda:</label>
+              <div class="row">
+                <input id="cellVolume" type="number" min="0" step="any" placeholder="Ej. 1.0" />
+                <select id="volumeUnit">
+                  <option value="angstrom3">Å³</option>
+                  <option value="cm3">cm³</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </form>
+      </article>
+
+      <button id="calcBtn" class="calc-btn" type="button">Calcular</button>
+
+      <article class="card output-card">
+        <div class="card-title">
+          <span>Información</span>
+        </div>
+        <div id="output" class="output">
+          <p>Selecciona un modo y presiona <strong>Calcular</strong>.</p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
